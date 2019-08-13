@@ -169,7 +169,6 @@
 
 <script>
 export default {
-  name: "nav",
   data(){
     return {
       activeClass: 'active',

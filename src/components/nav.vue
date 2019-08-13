@@ -39,127 +39,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="shouye">
-              <img src="../assets/shouye.png" alt="首页图标" />
-              <router-link to="/">
-                <label>首页</label>
-              </router-link>
-            </div>
-            <div class="shouye" v-link="{path: '/v2wangka'}">
-              <router-link to="2wangka">
-                <img src="../assets/wangka.png" alt="首页图标" />
-                <label>物联网卡</label>
-              </router-link>
-            </div>
-            <div class="shouye">
-              <img src="../assets/shebei.png" alt="首页图标" />
-              <router-link to="3shebei">
-                <label>设备管理</label>
-              </router-link>
-              <div class="touming">
-                <div class="xiala">
-                  <img src="../assets/sanjiao.png" />
-                  <ul>
-                    <li>交通工具配置</li>
-                    <li>主机设备查询</li>
-                    <li>屏端设备查询</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="shouye">
-              <img src="../assets/xitong.png" alt="首页图标" />
-              <router-link to="4xitong">
-                <label>系统管理</label>
-              </router-link>
-              <div class="touming">
-                <div class="xiala">
-                  <img src="../assets/sanjiao.png" />
-                  <ul>
-                    <li>公司管理</li>
-                    <li>用户管理</li>
-                    <li>角色管理</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="shouye">
-              <img src="../assets/meiti.png" alt="首页图标" />
-              <router-link to="5meiti">
-                <label>媒体与资源</label>
-              </router-link>
-              <div class="touming">
-                <div class="xiala">
-                  <img src="../assets/sanjiao.png" />
-                  <ul>
-                    <li>新增资源推送</li>
-                    <li>在线资源操作</li>
-                    <li>资源编辑管理</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="shouye">
-              <img src="../assets/shuju.png" alt="首页图标" />
-              <router-link to="6shuju">
-                <label>数据中心</label>
-              </router-link>
-              <div class="touming">
-                <div class="xiala">
-                  <img src="../assets/sanjiao.png" />
-                  <ul>
-                    <li>交通数据展示</li>
-                    <li>单主机统计</li>
-                    <li>单屏端统计</li>
-                    <li>广告投放效果</li>
-                    <li>广告分析统计</li>
-                    <li>GPS轨迹系统</li>
-                    <li>在线支付</li>
-                    <li>用户画像</li>
-                    <li>系统日志</li>
-                    <li>设备日志</li>
-                    <li>e-在线</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="shouye">
-              <img src="../assets/shuju.png" alt="首页图标" />
-              <router-link to="6shuju">
-                <label>媒体资源运维</label>
-              </router-link>
-              <div class="touming">
-                <div class="xiala">
-                  <img src="../assets/sanjiao.png" />
-                  <ul>
-                    <li>电影电视剧</li>
-                    <li>电子阅读</li>
-                    <li>游戏</li>
-                    <li>音乐MV</li>
-                    <li>综艺</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="shouye">
-              <img src="../assets/baobiao.png" alt="首页图标" />
-              <router-link to="7baobiao">
-                <label>报表管理</label>
-              </router-link>
-              <div class="touming">
-                <div class="xiala">
-                  <img src="../assets/sanjiao.png" />
-                  <ul>
-                    <li>设备运维报表</li>
-                    <li>广告运维报表</li>
-                    <li>支付报表</li>
-                    <li>媒体资源运维报表</li>
-                    <li>游戏运维报表</li>
-                  </ul>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
@@ -187,65 +66,170 @@ export default {
         },
         {
           name: '物联网卡',
-          path: '/2wangka',
+          path: '/internetCard',
           icon: 'wangka',
           child:[]
         },
         {
           name: '设备管理',
-          path: '/3shebei',
-          icon: 'shuju',
+          path: 'equipment',
+          icon: 'shebei',
           child:[
             {
               name: '交通工具配置',
-              path: '/3.1jiaotong'
+              path: '/traffic'
             },
             {
               name: '主机设备查询',
-              path: '/3.2zhuji'
+              path: '/host'
             },
             {
               name: '屏端设备查询',
-              path: '/3.3pingduan'
+              path: '/screen'
             }
           ]
         },
         {
           name: '系统管理',
-          path: '/4.1gongsi',
+          path: '/system',
           icon: 'xitong',
           child:[
             {
               name: '公司管理',
-              path: '/4.1gongsi'
+              path: '/company'
             },
             {
               name: '用户管理',
-              path: '/4.2yonghu'
+              path: '/user'
             },
             {
               name: '角色管理',
-              path: '/4.3juese'
+              path: '/role'
             }
           ]
         },
         {
           name: '媒体与资源',
-          path: '/5.1xinzeng',
+          path: '/media',
           icon: 'meiti',
           child:[
             {
               name: '新增资源推送',
-              path: '/5.1xinzeng'
+              path: '/resourceAdd'
             },
             {
               name: '在线资源操作',
-              path: '/5.2zaixian'
+              path: '/resourceOnline'
             },
             {
               name: '资源编辑管理',
-              path: '/5.3ziyuancaozuo'
+              path: '/resourceEdit'
             }
+          ]
+        },
+        {
+          name: '数据中心',
+          path: '/media',
+          icon: 'meiti',
+          child:[
+            {
+              name: '交通数据展示',
+              path: '/trafficDate'
+            },
+            {
+              name: '单主机统计',
+              path: '/hostDate'
+            },
+            {
+              name: '单屏端统计',
+              path: '/screenDate'
+            },
+            {
+              name: '广告投放效果',
+              path: '/advertPut'
+            },
+            {
+              name: '广告分析统计',
+              path: '/advertAnalysis'
+            },
+            {
+              name: 'GPS轨迹系统',
+              path: '/gps'
+            },
+            {
+              name: '在线支付',
+              path: '/onlinePayment'
+            },
+            {
+              name: '用户画像',
+              path: '/userPortrait'
+            },
+            {
+              name: '系统日志',
+              path: '/systemLog'
+            },
+            {
+              name: '设备日志',
+              path: '/equipmentLog'
+            },
+            {
+              name: 'e在线',
+              path: '/eOnline'
+            },
+          ]
+        },
+        {
+          name: '媒体资源运维',
+          path: '/operation',
+          icon: 'meiti',
+          child:[
+            {
+              name: '电影电视剧',
+              path: '/film'
+            },
+            {
+              name: '电子阅读',
+              path: '/eBook'
+            },
+            {
+              name: '游戏',
+              path: '/game'
+            },
+            {
+              name: '音乐MV',
+              path: '/music'
+            },
+            {
+              name: '综艺',
+              path: '/variety'
+            },
+          ]
+        },
+        {
+          name: '报表管理',
+          path: '/report',
+          icon: 'baobiao',
+          child:[
+            {
+              name: '设备运维报表',
+              path: '/equipmentReport'
+            },
+            {
+              name: '广告运维报表',
+              path: '/advertReport'
+            },
+            {
+              name: '支付报表',
+              path: '/paymentReport'
+            },
+            {
+              name: '媒体资源运维报表',
+              path: 'mediaReport'
+            },
+            {
+              name: '游戏运维报表',
+              path: '/gameReport'
+            },
           ]
         },
       ]

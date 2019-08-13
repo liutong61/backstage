@@ -25,24 +25,27 @@
         <div class="header_down">
           <div class="gongneng">
             <!-- 一个 -->
-            <div @mouseenter="mouseenter(index)" @mouseleave="mouseleave"  @click="test(index)" class="shouye" v-bind:class="{ BL: activenNmber == index }" v-for="(menu,index) in menuList" :key="menu.name">
-              <img :src='require("../assets/"+menu.icon+".png")' alt="首页图标" />
-              <router-link :to="menu.path">
-                <label>{{ menu.name }}</label>
-              </router-link>
-              <template v-if="menu.child.length > 0">
-                <transition name="el-zoom-in-top">
-                  <div class="touming" v-if="hoverNum == index" :myid = "index" >
-                    <div class="xiala">
-                      <img src="../assets/sanjiao.png" />
-                      <ul>
-                        <li v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
-                      </ul>
+              <div 
+                @mouseenter="mouseenter(index)" 
+                @mouseleave="mouseleave"  
+                @click="myClick(index,menu.path)" 
+                class="shouye" 
+                v-bind:class="{ BL: activenNmber == index }" v-for="(menu,index) in menuList" :key="menu.name">
+                <img :src='require("../assets/"+menu.icon+".png")' alt="首页图标" />
+                  <label>{{ menu.name }}</label>
+                <template v-if="menu.child.length > 0">
+                  <transition name="el-zoom-in-top">
+                    <div class="touming" v-if="hoverNum == index" :myid = "index" >
+                      <div class="xiala">
+                        <img src="../assets/sanjiao.png" />
+                        <ul>
+                          <li v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </transition>
-              </template>
-            </div>
+                  </transition>
+                </template>
+              </div>
           </div>
         </div>
       </div>
@@ -237,8 +240,9 @@ export default {
         },
       ]
   },methods:{
-    test(index){
+    myClick(index,path){
       this.activenNmber = index
+      this.$router.push(path);
     },
     mouseenter(index){
       this.hoverNum = index

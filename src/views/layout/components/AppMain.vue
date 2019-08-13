@@ -1,0 +1,21 @@
+<template>
+  <section class="app-main" >
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'AppMain',
+  computed: {
+   
+  }
+}
+</script>
+
+<style  rel="stylesheet/scss"  lang="scss" scoped>
+</style>
+
+

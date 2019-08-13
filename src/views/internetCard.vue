@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ltnav />
     <div class="xinxi">
       <h4>物联网卡</h4>
     </div>

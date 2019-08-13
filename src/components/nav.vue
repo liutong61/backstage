@@ -265,20 +265,26 @@ export default {
   height: 168px;
 }
 .header_center {
-  width: 1640px;
+  // width: 1640px;
+  max-width: 1640px;
+  padding: 0px 20px;
   position: relative;
   margin: 0 auto;
 }
 .header_up {
   display: flex;
   padding-top: 14px;
+  justify-content: space-between;
 }
 .header_left {
   display: flex;
   flex-flow: row;
-  width: 1640px;
+  // width: 1640px;
   img {
     height: 55px;
+  }
+  h1 {
+    width: 300px;
   }
 }
 h1 {
@@ -290,7 +296,7 @@ h1 {
 .header_right {
   display: flex;
   flex-flow: row-reverse;
-  width: 1640px;
+  // width: 1640px;
   align-items: flex-start;
   margin-top: 10px;
 }

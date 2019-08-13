@@ -317,7 +317,7 @@ label {
   flex-flow: row;
   display: flex;
   align-items: center;
-  margin-left: 40px;
+  margin-left: 30px;
 
   padding-left: 20px;
   padding-right: 20px;

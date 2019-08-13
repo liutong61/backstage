@@ -28,7 +28,7 @@
               <div 
                 @mouseenter="mouseenter(index)" 
                 @mouseleave="mouseleave"  
-                @click="myClick(index,menu.path)" 
+                @click.stop="myClick(index,menu.path)" 
                 class="shouye" 
                 v-bind:class="{ BL: activenNmber == index }" v-for="(menu,index) in menuList" :key="menu.name">
                 <img :src='require("../assets/"+menu.icon+".png")' alt="首页图标" />
@@ -39,7 +39,7 @@
                       <div class="xiala">
                         <img src="../assets/sanjiao.png" />
                         <ul>
-                          <li v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
+                          <li @click.stop="myClick(index,menuChild.path)" v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
                         </ul>
                       </div>
                     </div>
@@ -242,7 +242,7 @@ export default {
   },methods:{
     myClick(index,path){
       this.activenNmber = index
-      this.$router.push(path);
+      this.$router.push(path)
     },
     mouseenter(index){
       this.hoverNum = index

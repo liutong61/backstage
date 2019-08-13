@@ -25,19 +25,23 @@
         <div class="header_down">
           <div class="gongneng">
             <!-- 一个 -->
-            <div @click="test(index)" class="shouye" v-bind:class="{ BL: number == index }" v-for="(menu,index) in menuList" :key="menu.name">
+            <div @mouseenter="mouseenter(index)" @mouseleave="mouseleave"  @click="test(index)" class="shouye" v-bind:class="{ BL: number == index }" v-for="(menu,index) in menuList" :key="menu.name">
               <img :src='require("../assets/"+menu.icon+".png")' alt="首页图标" />
               <router-link :to="menu.path">
                 <label>{{ menu.name }}</label>
               </router-link>
-              <div class="touming" v-if="menu.child.length > 0">
-                <div class="xiala">
-                  <img src="../assets/sanjiao.png" />
-                  <ul>
-                    <li v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
-                  </ul>
-                </div>
-              </div>
+              <template v-if="menu.child.length > 0">
+                <transition name="el-zoom-in-top">
+                  <div class="touming" v-if="hoverNum == index" :myid = "index" >
+                    <div class="xiala">
+                      <img src="../assets/sanjiao.png" />
+                      <ul>
+                        <li v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </transition>
+              </template>
             </div>
             <!-- <div class="shouye">
               <img src="../assets/shouye.png" alt="首页图标" />
@@ -173,6 +177,7 @@ export default {
     return {
       activeClass: 'active',
       number:0,
+      hoverNum:-1,
       menuList: []
     }
   },created(){
@@ -251,6 +256,14 @@ export default {
   },methods:{
     test(index){
       this.number = index
+    },
+    mouseenter(index){
+      this.hoverNum = index
+      // alert('mouseenter')
+    },
+    mouseleave(){
+      this.hoverNum = -1
+      // alert('mouseleave')
     }
   }
 };

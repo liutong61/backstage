@@ -264,7 +264,7 @@ export default {
 }
 .header_center {
   // width: 1640px;
-  max-width: 1640px;
+  max-width: 85%;
   padding: 0px 20px;
   position: relative;
   margin: 0 auto;

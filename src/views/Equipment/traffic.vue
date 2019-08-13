@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ltnav />
     <div class="xinxi">
       <h4>交通工具配置</h4>
     </div>
@@ -8,13 +7,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import ltnav from "@/components/nav.vue";
 export default {
   name: "home",
-  components: {
-    ltnav
-  }
 };
 </script>
 <style>

@@ -87,6 +87,14 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/System/role.vue')
         },
         {
+          path: '/media',
+          name: 'media',
+          // route level code-splitting
+          // this generates a separate chunk (about.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "about" */ './views/Media/media.vue')
+        },
+        {
           path: '/resourceAdd',
           name: 'resourceAdd',
           // route level code-splitting
@@ -199,6 +207,36 @@ export default new Router({
           path: '/paymentReport',
           name: 'paymentReport',
           component: () => import( './views/Report/paymentReport.vue')
+        },
+        {
+          path: '/operation',
+          name: 'operation',
+          component: () => import( './views/Operation/operation.vue')
+        },
+        {
+          path: '/eBook',
+          name: 'eBook',
+          component: () => import( './views/Operation/eBook.vue')
+        },
+        {
+          path: '/film',
+          name: 'film',
+          component: () => import( './views/Operation/film.vue')
+        },
+        {
+          path: '/game',
+          name: 'game',
+          component: () => import( './views/Operation/game.vue')
+        },
+        {
+          path: '/music',
+          name: 'music',
+          component: () => import( './views/Operation/music.vue')
+        },
+        {
+          path: '/variety',
+          name: 'variety',
+          component: () => import( './views/Operation/variety.vue')
         },
       ]
     },

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="xinxi_background">
     <div class="xinxi">
       <h4>首页</h4>
     </div>
@@ -7,19 +7,17 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import ltnav from "@/components/nav.vue";
 export default {
   name: "home",
-  // components: {
-  //   ltnav
-  // }
 };
 </script>
 <style>
+.xinxi_background{
+  width: 100%;
+}
 .xinxi {
   background-color: white;
-  width: 1640px;
+  width: 85%px;
   height: 50px;
   position: absolute;
   top: 138px;

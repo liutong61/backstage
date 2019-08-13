@@ -25,19 +25,23 @@
         <div class="header_down">
           <div class="gongneng">
             <!-- 一个 -->
-            <div @click="test(index)" class="shouye" v-bind:class="{ BL: number == index }" v-for="(menu,index) in menuList" :key="menu.name">
+            <div @mouseenter="mouseenter(index)" @mouseleave="mouseleave"  @click="test(index)" class="shouye" v-bind:class="{ BL: activenNmber == index }" v-for="(menu,index) in menuList" :key="menu.name">
               <img :src='require("../assets/"+menu.icon+".png")' alt="首页图标" />
               <router-link :to="menu.path">
                 <label>{{ menu.name }}</label>
               </router-link>
-              <div class="touming" v-if="menu.child.length > 0">
-                <div class="xiala">
-                  <img src="../assets/sanjiao.png" />
-                  <ul>
-                    <li v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
-                  </ul>
-                </div>
-              </div>
+              <template v-if="menu.child.length > 0">
+                <transition name="el-zoom-in-top">
+                  <div class="touming" v-if="hoverNum == index" :myid = "index" >
+                    <div class="xiala">
+                      <img src="../assets/sanjiao.png" />
+                      <ul>
+                        <li v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </transition>
+              </template>
             </div>
           </div>
         </div>
@@ -48,11 +52,10 @@
 
 <script>
 export default {
-  name: "nav",
   data(){
     return {
-      activeClass: 'active',
-      number:0,
+      activenNmber:0,
+      hoverNum:-1,
       menuList: []
     }
   },created(){
@@ -235,7 +238,13 @@ export default {
       ]
   },methods:{
     test(index){
-      this.number = index
+      this.activenNmber = index
+    },
+    mouseenter(index){
+      this.hoverNum = index
+    },
+    mouseleave(){
+      this.hoverNum = -1
     }
   }
 };
@@ -250,20 +259,26 @@ export default {
   height: 168px;
 }
 .header_center {
-  width: 1640px;
+  // width: 1640px;
+  max-width: 1640px;
+  padding: 0px 20px;
   position: relative;
   margin: 0 auto;
 }
 .header_up {
   display: flex;
   padding-top: 14px;
+  justify-content: space-between;
 }
 .header_left {
   display: flex;
   flex-flow: row;
-  width: 1640px;
+  // width: 1640px;
   img {
     height: 55px;
+  }
+  h1 {
+    width: 300px;
   }
 }
 h1 {
@@ -275,7 +290,7 @@ h1 {
 .header_right {
   display: flex;
   flex-flow: row-reverse;
-  width: 1640px;
+  // width: 1640px;
   align-items: flex-start;
   margin-top: 10px;
 }
@@ -325,9 +340,7 @@ a {
 }
 .shouye:hover {
   background-color: #343657;
-  .touming {
-    display: block;
-  }
+  
 }
 ul,
 li {
@@ -336,7 +349,7 @@ li {
 .touming {
   padding: 30px 0px;
   width: 140px;
-  display: none;
+  display: block;
   position: absolute;
   top: 25px;
   left: 0;

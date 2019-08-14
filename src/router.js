@@ -14,13 +14,8 @@ export default new Router({
       component: Layout,
       children: [
         {
-<<<<<<< HEAD
           path: '/Home/:index',
           name: 'Home',
-=======
-          path: '/',
-          name: '',
->>>>>>> 9edef655c534e2554b89dd3b118770751509774c
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.

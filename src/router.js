@@ -11,14 +11,19 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: '/',
       component: Layout,
       children: [
         {
-          path: '/',
-          component: Home,
+          path: '/Home/:index',
+          name: 'Home',
+          // route level code-splitting
+          // this generates a separate chunk (about.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "about" */ './views/Home.vue')
         },
         {
-          path: '/internetCard',
+          path: '/internetCard/:index',
           name: 'internetCard',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -26,7 +31,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/internetCard.vue')
         },
         {
-          path: '/equipment',
+          path: '/equipment/:index',
           name: 'equipment',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -34,7 +39,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/Equipment/equipment.vue')
         },
         {
-          path: '/traffic',
+          path: '/traffic/:index',
           name: 'traffic',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -42,7 +47,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/Equipment/traffic.vue')
         },
         {
-          path: '/host',
+          path: '/host/:index',
           name: 'host',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -50,7 +55,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/Equipment/host.vue')
         },
         {
-          path: '/screen',
+          path: '/screen/:index',
           name: 'screen',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -58,7 +63,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/Equipment/screen.vue')
         },
         {
-          path: '/system',
+          path: '/system/:index',
           name: 'system',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -66,7 +71,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/System/system.vue')
         },
         {
-          path: '/company',
+          path: '/company/:index',
           name: 'company',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -74,36 +79,26 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/System/company.vue')
         },
         {
-          path: '/user',
+          path: '/user/:index',
           name: 'user',
           component: () => import( './views/System/user.vue')
         },
         {
-          path: '/role',
+          path: '/role/:index',
           name: 'role',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "about" */ './views/System/role.vue')
         },
+        
         {
-          path: '/media',
+          path: '/media/:index',
           name: 'media',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "about" */ './views/Media/media.vue')
+          component: () => import( './views/Media/media.vue')
         },
         {
-          path: '/resourceAdd',
-          name: 'resourceAdd',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "about" */ './views/Media/resourceAdd.vue')
-        },
-        {
-          path: '/resourceOnline',
+          path: '/resourceOnline/:index',
           name: 'resourceOnline',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -111,7 +106,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/Media/resourceOnline.vue')
         },
         {
-          path: '/resourceEdit',
+          path: '/resourceEdit/:index',
           name: 'resourceEdit',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
@@ -119,122 +114,122 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/Media/resourceEdit.vue')
         },
         {
-          path: 'advertAnalysis',
+          path: '/advertAnalysis/:index',
           name: 'advertAnalysis',
           component: () => import('./views/Date/advertAnalysis.vue')
         },
         {
-          path: 'advertPut',
+          path: '/advertPut/:index',
           name: 'advertPut',
           component: () => import('./views/Date/advertPut.vue')
         },
         {
-          path: 'date',
+          path: '/date/:index',
           name: 'date',
           component: () => import('./views/Date/date.vue')
         },
         {
-          path: 'equipmentLog',
+          path: '/equipmentLog/:index',
           name: 'equipmentLog',
           component: () => import('./views/Date/equipmentLog.vue')
         },
         {
-          path: 'gps',
+          path: '/gps/:index',
           name: 'gps',
           component: () => import('./views/Date/gps.vue')
         },
         {
-          path: 'hostDate',
+          path: '/hostDate/:index',
           name: 'hostDate',
           component: () => import('./views/Date/hostDate.vue')
         },
         {
-          path: 'screenDate',
+          path: '/screenDate/:index',
           name: 'screenDate',
           component: () => import('./views/Date/screenDate.vue')
         },
         {
-          path: 'onlinePayment',
+          path: '/onlinePayment/:index',
           name: 'onlinePayment',
           component: () => import('./views/Date/onlinePayment.vue')
         },
         {
-          path: 'systemLog',
+          path: '/systemLog/:index',
           name: 'systemLog',
           component: () => import('./views/Date/systemLog.vue')
         },
         {
-          path: 'trafficDate',
+          path: '/trafficDate/:index',
           name: 'trafficDate',
           component: () => import('./views/Date/trafficDate.vue')
         },
         {
-          path: 'userPortrait',
+          path: 'userPortrait/:index',
           name: 'userPortrait',
           component: () => import('./views/Date/userPortrait.vue')
         },
         {
-          path: 'eOnline',
+          path: '/eOnline/:index',
           name: 'eOnline',
           component: () => import('./views/Date/eOnline.vue')
         },
         {
-          path: '/report',
+          path: '/report/:index',
           name: 'report',
           component: () => import('./views/Report/report.vue')
         },
         {
-          path: '/advertReport',
+          path: '/advertReport/:index',
           name: 'advertReport',
           component: () => import('./views/Report/advertReport.vue')
         },
         {
-          path: '/equipmentReport',
+          path: '/equipmentReport/:index',
           name: 'equipmentReport',
           component: () => import( './views/Report/equipmentReport.vue')
         },
         {
-          path: '/mediaReport',
+          path: '/mediaReport/:index',
           name: 'mediaReport',
           component: () => import('./views/Report/mediaReport.vue')
         },
         {
-          path: '/gameReport',
+          path: '/gameReport/:index',
           name: 'gameReport',
           component: () => import( './views/Report/gameReport.vue')
         },
         {
-          path: '/paymentReport',
+          path: '/paymentReport/:index',
           name: 'paymentReport',
           component: () => import( './views/Report/paymentReport.vue')
         },
         {
-          path: '/operation',
+          path: '/operation/:index',
           name: 'operation',
           component: () => import( './views/Operation/operation.vue')
         },
         {
-          path: '/eBook',
+          path: '/eBook/:index',
           name: 'eBook',
           component: () => import( './views/Operation/eBook.vue')
         },
         {
-          path: '/film',
+          path: '/film/:index',
           name: 'film',
           component: () => import( './views/Operation/film.vue')
         },
         {
-          path: '/game',
+          path: '/game/:index',
           name: 'game',
           component: () => import( './views/Operation/game.vue')
         },
         {
-          path: '/music',
+          path: '/music/:index',
           name: 'music',
           component: () => import( './views/Operation/music.vue')
         },
         {
-          path: '/variety',
+          path: '/variety/:index',
           name: 'variety',
           component: () => import( './views/Operation/variety.vue')
         },

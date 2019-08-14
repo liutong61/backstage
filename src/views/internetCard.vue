@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="xinxi">
+  <div class="title_background">
+    <div class="title">
       <h4>物联网卡</h4>
     </div>
   </div>
@@ -12,10 +12,13 @@ export default {
 };
 </script>
 <style>
-.xinxi {
+.title_background{
+  width: 100%;
+  overflow: hidden;
+}
+.title {
   background-color: white;
-  width: 85%px;
-  height: 50px;
+  width: 84%;
   position: absolute;
   top: 138px;
   left: 0;

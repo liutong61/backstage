@@ -1,6 +1,6 @@
 <template>
-  <div class="xinxi_background">
-    <div class="xinxi">
+  <div class="title_background">
+    <div class="title">
       <h4>首页</h4>
     </div>
   </div>
@@ -8,17 +8,17 @@
 
 <script>
 export default {
-  name: "home",
+  name: "Home",
 };
 </script>
 <style>
-.xinxi_background{
+.title_background{
   width: 100%;
+  overflow: hidden;
 }
-.xinxi {
+.title {
   background-color: white;
-  width: 85%px;
-  height: 50px;
+  width: 84%;
   position: absolute;
   top: 138px;
   left: 0;

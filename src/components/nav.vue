@@ -242,7 +242,7 @@ export default {
   },methods:{
     myClick(index,path){
       this.activenNmber = index
-      this.$router.push({name:path,params:{index:index}})
+      this.$router.push({path:'/' + path,query:{index:index}})
     },
     mouseenter(index){
       this.hoverNum = index
@@ -251,8 +251,8 @@ export default {
       this.hoverNum = -1
     }
   },mounted(){
-    if(typeof(this.$route.params.index) != 'undefined'){
-      this.activenNmber = this.$route.params.index
+    if(typeof(this.$route.query.index) != 'undefined'){
+      this.activenNmber = this.$route.query.index
     }else{
       this.activenNmber = 0
     }

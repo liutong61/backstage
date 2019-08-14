@@ -66,13 +66,13 @@ export default {
     this.menuList = [
         {
           name: '首页',
-          path: '/',
+          path: '',
           icon: 'shouye',
           child:[]
         },
         {
           name: '物联网卡',
-          path: '/internetCard',
+          path: 'internetCard',
           icon: 'wangka',
           child:[]
         },
@@ -83,150 +83,150 @@ export default {
           child:[
             {
               name: '交通工具配置',
-              path: '/traffic'
+              path: 'traffic'
             },
             {
               name: '主机设备查询',
-              path: '/host'
+              path: 'host'
             },
             {
               name: '屏端设备查询',
-              path: '/screen'
+              path: 'screen'
             }
           ]
         },
         {
           name: '系统管理',
-          path: '/system',
+          path: 'system',
           icon: 'xitong',
           child:[
             {
               name: '公司管理',
-              path: '/company'
+              path: 'company'
             },
             {
               name: '用户管理',
-              path: '/user'
+              path: 'user'
             },
             {
               name: '角色管理',
-              path: '/role'
+              path: 'role'
             }
           ]
         },
         {
           name: '媒体与资源',
-          path: '/media',
+          path: 'media',
           icon: 'meiti',
           child:[
             {
               name: '新增资源推送',
-              path: '/resourceAdd'
+              path: 'resourceAdd'
             },
             {
               name: '在线资源操作',
-              path: '/resourceOnline'
+              path: 'resourceOnline'
             },
             {
               name: '资源编辑管理',
-              path: '/resourceEdit'
+              path: 'resourceEdit'
             }
           ]
         },
         {
           name: '数据中心',
-          path: '/media',
+          path: 'media',
           icon: 'meiti',
           child:[
             {
               name: '交通数据展示',
-              path: '/trafficDate'
+              path: 'trafficDate'
             },
             {
               name: '单主机统计',
-              path: '/hostDate'
+              path: 'hostDate'
             },
             {
               name: '单屏端统计',
-              path: '/screenDate'
+              path: 'screenDate'
             },
             {
               name: '广告投放效果',
-              path: '/advertPut'
+              path: 'advertPut'
             },
             {
               name: '广告分析统计',
-              path: '/advertAnalysis'
+              path: 'advertAnalysis'
             },
             {
               name: 'GPS轨迹系统',
-              path: '/gps'
+              path: 'gps'
             },
             {
               name: '在线支付',
-              path: '/onlinePayment'
+              path: 'onlinePayment'
             },
             {
               name: '用户画像',
-              path: '/userPortrait'
+              path: 'userPortrait'
             },
             {
               name: '系统日志',
-              path: '/systemLog'
+              path: 'systemLog'
             },
             {
               name: '设备日志',
-              path: '/equipmentLog'
+              path: 'equipmentLog'
             },
             {
               name: 'e在线',
-              path: '/eOnline'
+              path: 'eOnline'
             },
           ]
         },
         {
           name: '媒体资源运维',
-          path: '/operation',
+          path: 'operation',
           icon: 'meiti',
           child:[
             {
               name: '电影电视剧',
-              path: '/film'
+              path: 'film'
             },
             {
               name: '电子阅读',
-              path: '/eBook'
+              path: 'eBook'
             },
             {
               name: '游戏',
-              path: '/game'
+              path: 'game'
             },
             {
               name: '音乐MV',
-              path: '/music'
+              path: 'music'
             },
             {
               name: '综艺',
-              path: '/variety'
+              path: 'variety'
             },
           ]
         },
         {
           name: '报表管理',
-          path: '/report',
+          path: 'report',
           icon: 'baobiao',
           child:[
             {
               name: '设备运维报表',
-              path: '/equipmentReport'
+              path: 'equipmentReport'
             },
             {
               name: '广告运维报表',
-              path: '/advertReport'
+              path: 'advertReport'
             },
             {
               name: '支付报表',
-              path: '/paymentReport'
+              path: 'paymentReport'
             },
             {
               name: '媒体资源运维报表',
@@ -234,7 +234,7 @@ export default {
             },
             {
               name: '游戏运维报表',
-              path: '/gameReport'
+              path: 'gameReport'
             },
           ]
         },
@@ -242,13 +242,19 @@ export default {
   },methods:{
     myClick(index,path){
       this.activenNmber = index
-      this.$router.push(path)
+      this.$router.push({name:path,params:{index:index}})
     },
     mouseenter(index){
       this.hoverNum = index
     },
     mouseleave(){
       this.hoverNum = -1
+    }
+  },mounted(){
+    if(typeof(this.$route.params.index) != 'undefined'){
+      this.activenNmber = this.$route.params.index
+    }else{
+      this.activenNmber = 0
     }
   }
 };

@@ -14,8 +14,8 @@ export default new Router({
       component: Layout,
       children: [
         {
-          path: '/Home/:index',
-          name: 'Home',
+          path: '/',
+          name: '',
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
@@ -91,7 +91,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "about" */ './views/System/role.vue')
         },
         {
-          path: '/media/:index',
+          path: '/media',
           name: 'media',
           component: () => import( './views/Media/media.vue')
         },
@@ -212,32 +212,32 @@ export default new Router({
           component: () => import( './views/Report/paymentReport.vue')
         },
         {
-          path: '/operation/:index',
+          path: '/operation',
           name: 'operation',
           component: () => import( './views/Operation/operation.vue')
         },
         {
-          path: '/eBook/:index',
+          path: '/eBook',
           name: 'eBook',
           component: () => import( './views/Operation/eBook.vue')
         },
         {
-          path: '/film/:index',
+          path: '/film',
           name: 'film',
           component: () => import( './views/Operation/film.vue')
         },
         {
-          path: '/game/:index',
+          path: '/game',
           name: 'game',
           component: () => import( './views/Operation/game.vue')
         },
         {
-          path: '/music/:index',
+          path: '/music',
           name: 'music',
           component: () => import( './views/Operation/music.vue')
         },
         {
-          path: '/variety/:index',
+          path: '/variety',
           name: 'variety',
           component: () => import( './views/Operation/variety.vue')
         },

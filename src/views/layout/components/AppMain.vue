@@ -1,6 +1,6 @@
 <template>
-  <section class="app-main" >
-    <transition name="fade" mode="out-in">
+  <section id="app-main" >
+     <transition name="el-fade-in">
       <router-view></router-view>
     </transition>
   </section>
@@ -16,6 +16,10 @@ export default {
 </script>
 
 <style  rel="stylesheet/scss"  lang="scss" scoped>
+#app-main{
+  max-width: 1640px;
+  margin: 0px auto;
+}
 </style>
 
 

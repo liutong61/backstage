@@ -33,7 +33,7 @@
                 v-bind:class="{ BL: activenNmber == index }" v-for="(menu,index) in menuList" :key="menu.name">
                 <img :src='require("../assets/"+menu.icon+".png")' alt="首页图标" />
                   <label>{{ menu.name }}</label>
-                  <div class="rotate_icon"><img src="../assets/xiala.png" alt="下拉按钮"></div>
+                  <div class="rotate_icon"  v-if="menu.child.length > 0"><img src="../assets/xiala.png" alt="下拉按钮"></div>
                 <template v-if="menu.child.length > 0">
                   <transition name="el-zoom-in-top">
                     <div class="touming" v-if="hoverNum == index" :myid = "index" >
@@ -363,9 +363,13 @@ a {
 .shouye:hover {
   background-color: #343657;
   .rotate_icon img{
-     transform: rotate(180deg);
+     transform: rotate(0deg);
   }
 }
+.rotate_icon img{
+      transition: all .5s;
+      transform: rotate(-180deg);
+  }
 ul,
 li {
   text-decoration: none;
@@ -414,10 +418,10 @@ li:hover {
 }
 .xinxi {
   background-color: white;
-  max-width: 1640px;
+  max-width: 84%;
   height: 50px;
   position: relative;
-  top: -24px;
+  top: -20px;
   left: 0;
   right: 0;
   margin: 0 auto;

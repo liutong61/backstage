@@ -262,7 +262,8 @@ export default {
     }
   },watch: {
     // 如果 `activenNmber` 发生改变，这个函数就会运行
-    activenNmber: function (newValue, oldValue) {
+    activenNmber: function (newValue) {
+      console.log(newValue)
       this.activeTitle = this.menuList[newValue].name
     }
   }

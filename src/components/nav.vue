@@ -28,9 +28,9 @@
               <div 
                 @mouseenter="mouseenter(index)" 
                 @mouseleave="mouseleave"  
-                @click.stop="myClick(index,menu.path)" 
+                @click.stop="myClick(index,menu.path,-1)" 
                 class="shouye" 
-                v-bind:class="{ BL: activenNmber == index }" v-for="(menu,index) in menuList" :key="menu.name">
+                v-bind:class="{ BL: newActivenNmber == index }" v-for="(menu,index) in menuList" :key="menu.name">
                 <img :src='require("../assets/"+menu.icon+".png")' alt="首页图标" />
                   <label>{{ menu.name }}</label>
                   <div class="rotate_icon"  v-if="menu.child.length > 0"><img src="../assets/xiala.png" alt="下拉按钮"></div>
@@ -40,7 +40,10 @@
                       <div class="xiala">
                         <img src="../assets/sanjiao.png" />
                         <ul>
-                          <li @click.stop="myClick(index,menuChild.path)" v-for="menuChild in menu.child" :key="menuChild.name">{{ menuChild.name }}</li>
+                          <template v-for="(menuChild,cindex) in menu.child">
+                            <li @click.stop="myClick(index,menuChild.path,cindex)" :key="menuChild.name">{{ menuChild.name }}</li>
+                          </template>
+                          
                         </ul>
                       </div>
                     </div>
@@ -62,7 +65,9 @@ export default {
   data(){
     return {
       activeTitle:'',
+      newActivenNmber:0,
       activenNmber:0,
+      childActivenNmber:0,
       hoverNum:-1,
       menuList: []
     }
@@ -245,8 +250,12 @@ export default {
         },
       ]
   },methods:{
-    myClick(index,path){
+    myClick(index,path,cindex){
+      if(cindex != null){
+        index = index + '_' + cindex
+      }
       this.activenNmber = index
+      this.newActivenNmber = index.split('_')[0]
       this.$router.push({path:'/' + path,query:{index:index}})
     },
     mouseenter(index){
@@ -258,14 +267,29 @@ export default {
   },mounted(){
     if(typeof(this.$route.query.index) != 'undefined'){
       this.activenNmber = this.$route.query.index
+      this.newActivenNmber = this.$route.query.index.split('_')[0]
     }else{
       this.activenNmber = 0
+      this.activeTitle = this.menuList[this.activenNmber.split('_')[0]].name
     }
   },watch: {
     // 如果 `activenNmber` 发生改变，这个函数就会运行
     activenNmber: function (newValue) {
-      console.log(newValue)
-      this.activeTitle = this.menuList[newValue].name
+      console.log('newValue:'+newValue)
+      let p = 0
+      let c = 0
+      let str = newValue.split('_')
+      p = str[0]
+      if(str.length > 1){
+         c = str[1]
+      }
+      console.log('p:'+p)
+      console.log('c:'+c)
+      if(this.menuList[p].child.length > 0 && c != -1){
+        this.activeTitle = this.menuList[p].child[c].name
+      }else{
+        this.activeTitle = this.menuList[p].name
+      }
     }
   }
 };

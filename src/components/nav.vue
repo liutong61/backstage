@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="xinxi">
+    <div class="title">
       <h4>{{ activeTitle }}</h4>
     </div>
   </div>
@@ -270,7 +270,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .BL{
   background-color: #374afb !important;
 }
@@ -337,7 +337,7 @@ label {
   flex-flow: row;
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 10px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 6px;
@@ -416,22 +416,22 @@ li:hover {
   color: #374afb;
   font-weight: 600px;
 }
-.xinxi {
+.title {
   background-color: white;
-  max-width: 84%;
-  height: 50px;
-  position: relative;
-  top: -20px;
+  width: 84%;
+  position: absolute;
+  top: 138px;
   left: 0;
   right: 0;
   margin: 0 auto;
   border-radius: 4px;
   h4 {
-    color: black;
-    font-size: 16px;
-    padding-left: 20px;
-    font-weight: 600;
-    line-height: 50px;
-  }
+  color: black;
+  font-size: 16px;
+  padding-left: 20px;
+  font-weight: 600;
+  line-height: 50px;
 }
+}
+
 </style>

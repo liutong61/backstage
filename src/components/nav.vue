@@ -51,6 +51,9 @@
         </div>
       </div>
     </div>
+    <div class="xinxi">
+      <h4>{{ activeTitle }}</h4>
+    </div>
   </div>
 </template>
 
@@ -58,6 +61,7 @@
 export default {
   data(){
     return {
+      activeTitle:'',
       activenNmber:0,
       hoverNum:-1,
       menuList: []
@@ -257,6 +261,12 @@ export default {
     }else{
       this.activenNmber = 0
     }
+  },watch: {
+    // 如果 `activenNmber` 发生改变，这个函数就会运行
+    activenNmber: function (newValue) {
+      console.log(newValue)
+      this.activeTitle = this.menuList[newValue].name
+    }
   }
 };
 </script>
@@ -402,5 +412,22 @@ li:hover {
   color: #374afb;
   font-weight: 600px;
 }
-
+.xinxi {
+  background-color: white;
+  max-width: 1640px;
+  height: 50px;
+  position: relative;
+  top: -24px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 4px;
+  h4 {
+    color: black;
+    font-size: 16px;
+    padding-left: 20px;
+    font-weight: 600;
+    line-height: 50px;
+  }
+}
 </style>

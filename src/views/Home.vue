@@ -1,6 +1,5 @@
 <template>
-  <div>
-  
+  <div style="max-width: 1640px; ">
   </div>
 </template>
 
@@ -9,6 +8,5 @@ export default {
   name: "Home",
 };
 </script>
-<style>
-
+<style scoped>
 </style>

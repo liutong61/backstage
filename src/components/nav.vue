@@ -260,6 +260,7 @@ export default {
       this.activenNmber = this.$route.query.index
     }else{
       this.activenNmber = 0
+      this.activeTitle = this.menuList[this.activenNmber].name
     }
   },watch: {
     // 如果 `activenNmber` 发生改变，这个函数就会运行

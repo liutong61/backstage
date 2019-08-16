@@ -270,7 +270,7 @@ export default {
       this.newActivenNmber = this.$route.query.index.split('_')[0]
     }else{
       this.activenNmber = 0
-      this.activeTitle = this.menuList[this.activenNmber.split('_')[0]].name
+      this.activeTitle = this.menuList[this.activenNmber].name
     }
   },watch: {
     // 如果 `activenNmber` 发生改变，这个函数就会运行

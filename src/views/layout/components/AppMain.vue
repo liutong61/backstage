@@ -17,7 +17,7 @@ export default {
 
 <style  rel="stylesheet/scss"  lang="scss" scoped>
 #app-main{
-  max-width: 1640px;
+  max-width: 84%;
   margin: 0px auto;
 }
 </style>

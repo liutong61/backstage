@@ -7,7 +7,8 @@
 <style lang="scss">
 body{
   margin: 0;padding: 0;
-  background-color: #f7f7f7;
+  background-color: #f8f9fa;
+  font-family: '	Source Han Sans CN';
 }
 h1,h2,h3,h4,h5,h6,ul,li{
   margin: 0px;

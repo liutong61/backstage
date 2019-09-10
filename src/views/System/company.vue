@@ -1,14 +1,9 @@
 <template>
   <div class="company">
     <div class="row_search clearfix">
-      <div class="search">
-        <input
-          type="text"
-          placeholder="请输入需要查询的公司名称"
-          class="search_content"
-        />
-        <div>搜索</div>
-      </div>
+      <el-input type="text" style="width: 360px;padding-left: 0px;"  placeholder="请输入需要查询的公司名称" v-model="search"  class="search_content">
+        <el-button style="background-color: #374AFB; color: #fff;border-radius: inherit;" slot="append" type="primary" icon="el-icon-search">搜索</el-button>
+      </el-input>
       <div class="add" @click="dialogVisible = true">
         <img src="../../assets/tianjia.png" alt="添加公司图标" />
         <label for>添加公司</label>
@@ -17,22 +12,23 @@
     <div class="row_card">
       <div class="card" v-for="c in companys" :key="c.name">
         <p>{{ c.name }}</p>
-        <img src="../../assets/del.png" alt="" class="delete" />
+        <el-button style="top: 10px;right: 15px;" type="danger" icon="el-icon-delete" class="delete" @click="companyDelete" size="mini" circle></el-button>
+        <!-- <img src="../../assets/del.png" alt class="delete"  /> -->
         <div class="show">
           <img src="../../assets/phone_number.png" alt="公司电话图标" />
-          <label for="">公司电话：0752-2616166</label>
+          <label for>公司电话：0752-2616166</label>
         </div>
         <div class="show">
           <img src="../../assets/index.png" alt="官网图标" />
-          <label for="">公司官网：wwww.goldingmedia.com</label>
+          <label for>公司官网：wwww.goldingmedia.com</label>
         </div>
         <div class="show">
           <img src="../../assets/beizhu.png" alt="备注图标" />
-          <label for="">备注：</label>
+          <label for>备注：</label>
         </div>
         <div class="show">
           <img src="../../assets/time.png" alt="时间图标" />
-          <label for="">注册时间：2019-5-20</label>
+          <label for>注册时间：2019-5-20</label>
         </div>
         <div class="slide_bj">
           <div class="slide"></div>
@@ -43,16 +39,11 @@
         </i-switch>
         <div class="edit">
           <img src="../../assets/edit.png" alt="编辑图标" />
-          <label for="">编辑</label>
+          <label for>编辑</label>
         </div>
       </div>
     </div>
-    <el-dialog
-      title="添加公司"
-      :visible.sync="dialogVisible"
-      width="30%"
-      :before-close="handleClose"
-    >
+    <el-dialog title="添加公司" :visible.sync="dialogVisible" width="35%">
       <el-form
         :model="ruleForm"
         :rules="rules"
@@ -61,24 +52,30 @@
         class="demo-ruleForm"
       >
         <el-form-item label="公司名称" prop="name">
-          <el-input v-model="ruleForm.name"></el-input>
+          <el-input
+            v-model="ruleForm.name"
+            placeholder="请输入公司名称"
+            maxlength="20"
+            minlength="2"
+            show-word-limit
+          ></el-input>
         </el-form-item>
-         <el-form-item label="公司电话" prop="phoneNumber">
-          <el-input v-model="ruleForm.phoneNumber"></el-input>
+        <el-form-item label="公司电话" prop="phoneNumber">
+          <el-input v-model="ruleForm.phoneNumber" placeholder="请输入公司电话"></el-input>
         </el-form-item>
-        <el-form-item label="公司官方" prop="website">
-          <el-input v-model="ruleForm.website"></el-input>
+        <el-form-item label="公司官网" prop="website">
+          <el-input v-model="ruleForm.website" placeholder="请输入公司官网">
+            <template slot="prepend">Http://</template>
+          </el-input>
         </el-form-item>
         <el-form-item label="活动形式" prop="desc">
-          <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+          <el-input type="textarea" v-model="ruleForm.desc" placeholder="请输入活动形式"></el-input>
         </el-form-item>
       </el-form>
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -88,29 +85,52 @@
 // import { createCipher } from 'crypto';
 // @ is an alias to /src
 // import ltnav from "@/components/nav.vue";
+
 export default {
   data() {
+    var validPhone = (rule, value, callback) => {
+      const reg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+      if (!value) {
+        callback(new Error("请输入电话号码"));
+      } else if (!reg.test(value)) {
+        callback(new Error("请输入正确的11位手机号码"));
+      } else {
+        callback();
+      }
+    };
     return {
       companys: new Array(),
+      search:"",
       dialogVisible: false,
       ruleForm: {
         name: "",
         desc: "",
-        phoneNumber:"",
-        website:"",
+        phoneNumber: "",
+        website: ""
       },
 
       rules: {
         name: [
-          { required: true, message: "请输入活动名称", trigger: "blur" },
-          { min: 2, max: 20, message: "长度在 2 到 20 个字符", trigger: "change" }
+          { required: true, message: "请输入公司名称", trigger: "blur" },
+          {
+            min: 2,
+            max: 20,
+            message: "长度在 2 到 20 个字符",
+            trigger: "change"
+          }
         ],
         desc: [{ required: true, message: "请填写活动形式", trigger: "blur" }],
         phoneNumber: [
-          { required: true, message: "请输入", trigger: "blur" },
-          { type:'number',message:'电话号码必须为数字' },
-          { min: 2, max: 20, message: "长度在 2 到 20 个数字", trigger: "change" }
-        ],
+          { required: true, message: "请输入电话号码", trigger: "blur" },
+          // { type: 'number', message: "电话号码必须为数字" },
+          { required: true, trigger: "change", validator: validPhone },
+          {
+            min: 2,
+            max: 20,
+            message: "长度在 2 到 20 个数字",
+            trigger: "change"
+          }
+        ]
       }
     };
   },
@@ -120,13 +140,28 @@ export default {
   // }
   created() {
     //调用后台数据
-
     for (var i = 0; i < 8; i++) {
       var company = { name: "公司名称" + (i + 1), isCheck: true };
       console.log(this.companys.push(company));
     }
   },
   methods: {
+    companyDelete() {
+      this.$confirm("此操作将永久删除该公司, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          this.$message({
+            type: "success",
+            message: "删除成功!"
+          });
+        })
+        .catch(() => {
+          //取消删除
+        });
+    },
     test() {
       alert(1);
     }
@@ -134,6 +169,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.company{
+  margin-bottom: 50px;
+}
 .ivu-switch-checked {
   background-color: #42c88b;
   border-color: #42c88b;
@@ -164,7 +202,7 @@ export default {
   -web-kit-appearance: none;
   -moz-appearance: none;
   box-sizing: border-box;
-  border: 1px solid #c8cccf;
+  // border: 1px solid #c8cccf;
   color: #6a6f77;
   padding-left: 10px;
 }
@@ -190,9 +228,8 @@ export default {
     text-align: center;
     line-height: 36px;
     color: #5867dd;
-    font-family: "	Source Han Sans CN";
     font-weight: 600;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             cursor: pointer;
+    cursor: pointer;
     font-size: 14px;
   }
 }

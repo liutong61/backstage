@@ -8,7 +8,8 @@
 body{
   margin: 0;padding: 0;
   background-color: #f6f6f6 !important;
-  font-family: '	Source Han Sans CN';
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  // font-family: '	Source Han Sans CN';
 }
 .clearfix:after{
   visibility: hidden;
@@ -23,7 +24,7 @@ h1,h2,h3,h4,h5,h6,ul,li{
   padding: 0px;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  // font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

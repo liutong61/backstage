@@ -25,288 +25,305 @@
         <div class="header_down">
           <div class="gongneng">
             <!-- 一个 -->
-              <div 
-                @mouseenter="mouseenter(index)" 
-                @mouseleave="mouseleave"  
-                @click.stop="myClick(index,menu.path,-1)" 
-                class="shouye" 
-                v-bind:class="{ BL: newActivenNmber == index }" v-for="(menu,index) in menuList" :key="menu.name">
-                <img :src='require("../assets/"+menu.icon+".png")' alt="首页图标" />
-                  <label>{{ menu.name }}</label>
-                  <div class="rotate_icon"  v-if="menu.child.length > 0"><img src="../assets/xiala.png" alt="下拉按钮"></div>
-                <template v-if="menu.child.length > 0">
-                  <transition name="el-zoom-in-top">
-                    <div class="touming" v-if="hoverNum == index" :myid = "index" >
-                      <div class="xiala">
-                        <img src="../assets/sanjiao.png" />
-                        <ul>
-                          <template v-for="(menuChild,cindex) in menu.child">
-                            <li @click.stop="myClick(index,menuChild.path,cindex)" :key="menuChild.name">{{ menuChild.name }}</li>
-                          </template>
-                          
-                        </ul>
-                      </div>
-                    </div>
-                  </transition>
-                </template>
+            <div
+              @mouseenter="mouseenter(index)"
+              @mouseleave="mouseleave"
+              @click.stop="myClick(index, menu.path, -1)"
+              class="shouye"
+              v-bind:class="{ BL: newActivenNmber == index }"
+              v-for="(menu, index) in menuList"
+              :key="menu.name"
+            >
+              <img
+                :src="require('../assets/' + menu.icon + '.png')"
+                alt="首页图标"
+              />
+              <label>{{ menu.name }}</label>
+              <div class="rotate_icon" v-if="menu.child.length > 0">
+                <img src="../assets/xiala.png" alt="下拉按钮" />
               </div>
+              <template v-if="menu.child.length > 0">
+                <transition name="el-zoom-in-top">
+                  <div class="touming" v-if="hoverNum == index" :myid="index">
+                    <div class="xiala">
+                      <img src="../assets/sanjiao.png" />
+                      <ul>
+                        <template v-for="(menuChild, cindex) in menu.child">
+                          <li
+                            @click.stop="myClick(index, menuChild.path, cindex)"
+                            :key="menuChild.name"
+                          >
+                            {{ menuChild.name }}
+                          </li>
+                        </template>
+                      </ul>
+                    </div>
+                  </div>
+                </transition>
+              </template>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="title">
-      <h4>{{ activeTitle }}</h4>
+    <div class="title_bj">
+      <div class="title">
+        <h4>{{ activeTitle }}</h4>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      activeTitle:'',
-      newActivenNmber:0,
-      activenNmber:0,
-      childActivenNmber:0,
-      hoverNum:-1,
+      activeTitle: "",
+      newActivenNmber: 0,
+      activenNmber: 0,
+      childActivenNmber: 0,
+      hoverNum: -1,
       menuList: []
-    }
-  },created(){
+    };
+  },
+  created() {
     //假设，这里是调取后台接口 获取数据
     this.menuList = [
-        {
-          name: '首页',
-          path: '',
-          icon: 'shouye',
-          child:[]
-        },
-        {
-          name: '物联网卡',
-          path: 'internetCard',
-          icon: 'wangka',
-          child:[]
-        },
-        {
-          name: '设备管理',
-          path: 'equipment',
-          icon: 'shebei',
-          child:[
-            {
-              name: '交通工具配置',
-              path: 'traffic'
-            },
-            {
-              name: '主机设备查询',
-              path: 'host'
-            },
-            {
-              name: '屏端设备查询',
-              path: 'screen'
-            }
-          ]
-        },
-        {
-          name: '系统管理',
-          path: 'system',
-          icon: 'xitong',
-          child:[
-            {
-              name: '公司管理',
-              path: 'company'
-            },
-            {
-              name: '用户管理',
-              path: 'user'
-            },
-            {
-              name: '角色管理',
-              path: 'role'
-            }
-          ]
-        },
-        {
-          name: '媒体与资源',
-          path: 'media',
-          icon: 'meiti',
-          child:[
-            {
-              name: '新增资源推送',
-              path: 'resourceAdd'
-            },
-            {
-              name: '在线资源操作',
-              path: 'resourceOnline'
-            },
-            {
-              name: '资源编辑管理',
-              path: 'resourceEdit'
-            }
-          ]
-        },
-        {
-          name: '数据中心',
-          path: 'media',
-          icon: 'meiti',
-          child:[
-            {
-              name: '交通数据展示',
-              path: 'trafficDate'
-            },
-            {
-              name: '单主机统计',
-              path: 'hostDate'
-            },
-            {
-              name: '单屏端统计',
-              path: 'screenDate'
-            },
-            {
-              name: '广告投放效果',
-              path: 'advertPut'
-            },
-            {
-              name: '广告分析统计',
-              path: 'advertAnalysis'
-            },
-            {
-              name: 'GPS轨迹系统',
-              path: 'gps'
-            },
-            {
-              name: '在线支付',
-              path: 'onlinePayment'
-            },
-            {
-              name: '用户画像',
-              path: 'userPortrait'
-            },
-            {
-              name: '系统日志',
-              path: 'systemLog'
-            },
-            {
-              name: '设备日志',
-              path: 'equipmentLog'
-            },
-            {
-              name: 'e在线',
-              path: 'eOnline'
-            },
-          ]
-        },
-        {
-          name: '媒体资源运维',
-          path: 'operation',
-          icon: 'meiti',
-          child:[
-            {
-              name: '电影电视剧',
-              path: 'film'
-            },
-            {
-              name: '电子阅读',
-              path: 'eBook'
-            },
-            {
-              name: '游戏',
-              path: 'game'
-            },
-            {
-              name: '音乐MV',
-              path: 'music'
-            },
-            {
-              name: '综艺',
-              path: 'variety'
-            },
-          ]
-        },
-        {
-          name: '报表管理',
-          path: 'report',
-          icon: 'baobiao',
-          child:[
-            {
-              name: '设备运维报表',
-              path: 'equipmentReport'
-            },
-            {
-              name: '广告运维报表',
-              path: 'advertReport'
-            },
-            {
-              name: '支付报表',
-              path: 'paymentReport'
-            },
-            {
-              name: '媒体资源运维报表',
-              path: 'mediaReport'
-            },
-            {
-              name: '游戏运维报表',
-              path: 'gameReport'
-            },
-          ]
-        },
-      ]
-  },methods:{
-    myClick(index,path,cindex){
-      if(cindex != null){
-        index = index + '_' + cindex
+      {
+        name: "首页",
+        path: "",
+        icon: "shouye",
+        child: []
+      },
+      {
+        name: "物联网卡",
+        path: "internetCard",
+        icon: "wangka",
+        child: []
+      },
+      {
+        name: "设备管理",
+        path: "equipment",
+        icon: "shebei",
+        child: [
+          {
+            name: "交通工具配置",
+            path: "traffic"
+          },
+          {
+            name: "主机设备查询",
+            path: "host"
+          },
+          {
+            name: "屏端设备查询",
+            path: "screen"
+          }
+        ]
+      },
+      {
+        name: "系统管理",
+        path: "system",
+        icon: "xitong",
+        child: [
+          {
+            name: "公司管理",
+            path: "company"
+          },
+          {
+            name: "用户管理",
+            path: "user"
+          },
+          {
+            name: "角色管理",
+            path: "role"
+          }
+        ]
+      },
+      {
+        name: "媒体与资源",
+        path: "media",
+        icon: "meiti",
+        child: [
+          {
+            name: "新增资源推送",
+            path: "resourceAdd"
+          },
+          {
+            name: "在线资源操作",
+            path: "resourceOnline"
+          },
+          {
+            name: "资源编辑管理",
+            path: "resourceEdit"
+          }
+        ]
+      },
+      {
+        name: "数据中心",
+        path: "media",
+        icon: "meiti",
+        child: [
+          {
+            name: "交通数据展示",
+            path: "trafficDate"
+          },
+          {
+            name: "单主机统计",
+            path: "hostDate"
+          },
+          {
+            name: "单屏端统计",
+            path: "screenDate"
+          },
+          {
+            name: "广告投放效果",
+            path: "advertPut"
+          },
+          {
+            name: "广告分析统计",
+            path: "advertAnalysis"
+          },
+          {
+            name: "GPS轨迹系统",
+            path: "gps"
+          },
+          {
+            name: "在线支付",
+            path: "onlinePayment"
+          },
+          {
+            name: "用户画像",
+            path: "userPortrait"
+          },
+          {
+            name: "系统日志",
+            path: "systemLog"
+          },
+          {
+            name: "设备日志",
+            path: "equipmentLog"
+          },
+          {
+            name: "e在线",
+            path: "eOnline"
+          }
+        ]
+      },
+      {
+        name: "媒体资源运维",
+        path: "operation",
+        icon: "meiti",
+        child: [
+          {
+            name: "电影电视剧",
+            path: "film"
+          },
+          {
+            name: "电子阅读",
+            path: "eBook"
+          },
+          {
+            name: "游戏",
+            path: "game"
+          },
+          {
+            name: "音乐MV",
+            path: "music"
+          },
+          {
+            name: "综艺",
+            path: "variety"
+          }
+        ]
+      },
+      {
+        name: "报表管理",
+        path: "report",
+        icon: "baobiao",
+        child: [
+          {
+            name: "设备运维报表",
+            path: "equipmentReport"
+          },
+          {
+            name: "广告运维报表",
+            path: "advertReport"
+          },
+          {
+            name: "支付报表",
+            path: "paymentReport"
+          },
+          {
+            name: "媒体资源运维报表",
+            path: "mediaReport"
+          },
+          {
+            name: "游戏运维报表",
+            path: "gameReport"
+          }
+        ]
       }
-      this.activenNmber = index
-      this.newActivenNmber = index.split('_')[0]
-      this.$router.push({path:'/' + path,query:{index:index}})
+    ];
+  },
+  methods: {
+    myClick(index, path, cindex) {
+      if (cindex != null) {
+        index = index + "_" + cindex;
+      }
+      this.activenNmber = index;
+      this.newActivenNmber = index.split("_")[0];
+      this.$router.push({ path: "/" + path, query: { index: index } });
     },
-    mouseenter(index){
-      this.hoverNum = index
+    mouseenter(index) {
+      this.hoverNum = index;
     },
-    mouseleave(){
-      this.hoverNum = -1
+    mouseleave() {
+      this.hoverNum = -1;
     }
-  },mounted(){
-    if(typeof(this.$route.query.index) != 'undefined'){
-      this.activenNmber = this.$route.query.index
-      this.newActivenNmber = this.$route.query.index.split('_')[0]
-    }else{
-      this.activenNmber = 0
-      this.activeTitle = this.menuList[this.activenNmber].name
+  },
+  mounted() {
+    if (typeof this.$route.query.index != "undefined") {
+      this.activenNmber = this.$route.query.index;
+      this.newActivenNmber = this.$route.query.index.split("_")[0];
+    } else {
+      this.activenNmber = 0;
+      this.activeTitle = this.menuList[this.activenNmber].name;
     }
-  },watch: {
+  },
+  watch: {
     // 如果 `activenNmber` 发生改变，这个函数就会运行
-    activenNmber: function (newValue) {
-      console.log('newValue:'+newValue)
-      let p = 0
-      let c = 0
-      let str = newValue.split('_')
-      p = str[0]
-      if(str.length > 1){
-         c = str[1]
+    activenNmber: function(newValue) {
+      console.log("newValue:" + newValue);
+      let p = 0;
+      let c = 0;
+      let str = newValue.split("_");
+      p = str[0];
+      if (str.length > 1) {
+        c = str[1];
       }
-      console.log('p:'+p)
-      console.log('c:'+c)
-      if(this.menuList[p].child.length > 0 && c != -1){
-        this.activeTitle = this.menuList[p].child[c].name
-      }else{
-        this.activeTitle = this.menuList[p].name
+      console.log("p:" + p);
+      console.log("c:" + c);
+      if (this.menuList[p].child.length > 0 && c != -1) {
+        this.activeTitle = this.menuList[p].child[c].name;
+      } else {
+        this.activeTitle = this.menuList[p].name;
       }
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-.BL{
+.BL {
   background-color: #374afb !important;
 }
 .header_background {
   background-color: #1f1e2e;
   width: 100%;
-  height: 168px;
+  height: 180px;
 }
 .header_center {
   // width: 1640px;
   max-width: 84%;
-  padding: 0px 20px;
   position: relative;
   margin: 0 auto;
 }
@@ -358,6 +375,7 @@ label {
   align-items: center;
 }
 .shouye {
+  cursor: pointer;
   flex-flow: row;
   display: flex;
   align-items: center;
@@ -368,9 +386,11 @@ label {
   padding-top: 6px;
   border-radius: 4px;
   position: relative;
+  margin-top: 10px;
 }
-.rotate_icon{
+.rotate_icon {
   padding-left: 6px;
+  cursor: pointer;
 }
 .shouye:nth-child(1) {
   margin-left: 0px;
@@ -383,17 +403,18 @@ a {
   flex-flow: row;
   padding-bottom: 50px;
   padding-top: 14px;
+  cursor: pointer;
 }
 .shouye:hover {
   background-color: #343657;
-  .rotate_icon img{
-     transform: rotate(0deg);
+  .rotate_icon img {
+    transform: rotate(0deg);
   }
 }
-.rotate_icon img{
-      transition: all .5s;
-      transform: rotate(-180deg);
-  }
+.rotate_icon img {
+  transition: all 0.5s;
+  transform: rotate(-180deg);
+}
 ul,
 li {
   text-decoration: none;
@@ -444,18 +465,21 @@ li:hover {
   background-color: white;
   width: 84%;
   position: absolute;
-  top: 138px;
+  top: 152px;
   left: 0;
   right: 0;
   margin: 0 auto;
   border-radius: 4px;
   h4 {
-  color: black;
-  font-size: 16px;
-  padding-left: 20px;
-  font-weight: 600;
-  line-height: 50px;
+    color: black;
+    font-size: 16px;
+    padding-left: 20px;
+    font-weight: 600;
+    line-height: 50px;
+  }
 }
+.title_bj{
+  width: 100%;
+  height: 25px;
 }
-
 </style>

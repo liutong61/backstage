@@ -7,8 +7,16 @@
 <style lang="scss">
 body{
   margin: 0;padding: 0;
-  background-color: #f8f9fa;
+  background-color: #f6f6f6 !important;
   font-family: '	Source Han Sans CN';
+}
+.clearfix:after{
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
 h1,h2,h3,h4,h5,h6,ul,li{
   margin: 0px;

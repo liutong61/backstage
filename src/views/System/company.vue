@@ -12,8 +12,8 @@
     <div class="row_card">
       <div class="card" v-for="c in companys" :key="c.name">
         <p>{{ c.name }}</p>
-        <el-button style="top: 10px;right: 15px;" type="danger" icon="el-icon-delete" class="delete" @click="companyDelete" size="mini" circle></el-button>
-        <!-- <img src="../../assets/del.png" alt class="delete"  /> -->
+        <!-- <el-button style="top: 10px;right: 15px;" type="danger" icon="el-icon-delete" class="delete" @click="companyDelete" size="mini" circle></el-button> -->
+        <img src="../../assets/del.png" alt class="delete"  @click="companyDelete" />
         <div class="show">
           <img src="../../assets/phone_number.png" alt="公司电话图标" />
           <label for>公司电话：0752-2616166</label>
@@ -247,7 +247,14 @@ export default {
   position: absolute;
   top: 20px;
   right: 20px;
+  cursor: pointer;
+  
 }
+.delete:active{
+  animation-name: fangda;
+  animation-duration: 1s;
+}
+
 .show {
   flex-flow: column;
   justify-content: center;
@@ -302,4 +309,5 @@ p {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 </style>

@@ -75,6 +75,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -315,6 +316,9 @@ export default {
 <style lang="scss" scoped>
 .BL {
   background-color: #374afb !important;
+}
+h1{
+  line-height: 40px;
 }
 .header_background {
   background-color: #1f1e2e;

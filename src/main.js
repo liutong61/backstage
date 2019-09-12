@@ -7,6 +7,7 @@ import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 import 'element-ui/lib/theme-chalk/index.css';
 import $ from 'jquery'
+import './quasar'
 
 
 Vue.config.productionTip = false

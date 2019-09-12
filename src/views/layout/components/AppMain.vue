@@ -1,8 +1,8 @@
 <template>
   <section id="app-main" >
-     <transition name="el-fade-in">
+     <!-- <transition name="el-fade-in"> -->
       <router-view></router-view>
-    </transition>
+    <!-- </transition> -->
   </section>
 </template>
 
